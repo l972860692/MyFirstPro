@@ -1,0 +1,19 @@
+﻿@model IEnumerable<string>
+
+@Html.ActionLink("Home", "List", "Product") 
+@foreach (var link in Model) { 
+// routeValues
+//类型：System.Object
+//一个包含路由参数的对象。 通过检查对象的属性，利用反射检索参数。 该对象通常是使用对象初始值设定项语法创建的。
+//htmlAttributes
+//类型：System.Object
+//一个对象，其中包含要为该元素设置的 HTML 特性。
+@Html.RouteLink(link, new { 
+controller = "Product", 
+action = "List", 
+category = link, 
+page = 1 
+},new { 
+ @class = link == ViewBag.SelectedCategory ? "selected" : null 
+}) 
+} 
